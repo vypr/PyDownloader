@@ -31,7 +31,7 @@ def down():
     mybtn = Button(root2,text="exit", command=exit2).pack()
     root2.mainloop()
 ##################################################################
-# Yea sure there is some weird names,but it gets the job done.
+# Yea sure, there is some weird names,but it gets the job done.
 def youtube_download():
     yt = Tk()
     yt.title("YouTube-Video-Downloader")
