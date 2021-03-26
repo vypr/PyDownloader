@@ -10,9 +10,14 @@ subprocess.call("yay -S tk" , shell=True)
 root = Tk()
 root.geometry("200x200")
 root.title("Wget Downloader")
-url = Entry(root, width=20)
-url.pack()
 ###################################################################
+def gui_wget():
+    wgetgui = Tk()
+    wgetgui.title("Wget_GUI_Downloader")
+    wgetgui.geometry("200x200")
+    url = Entry(root, width=20)
+    url.pack()
+    btn = Button(wgetgui,text="Download", command=down)
 def down():
     text = url.get()
     wget.download(text)
@@ -43,5 +48,5 @@ def youtube_download():
 
 ###################################################################
 button_yt = Button(root,text="Youtube",command=youtube_download).pack()
-button_Down = Button(root,text="wget", command=down).pack()
+button_Down = Button(root,text="wget", command=gui_wget).pack()
 root.mainloop()
