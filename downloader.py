@@ -15,7 +15,8 @@ if depnds.upper() == "Y":
 #################################################################
 root = Tk()
 root.geometry("200x355")
-root.title("Wget Downloader")
+root.title("Downloader")
+root.resizable(0, 0)
 load = Image.open('1.jpg')
 render = ImageTk.PhotoImage(load)
 img = Label(root,image=render)
