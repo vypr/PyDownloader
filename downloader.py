@@ -1,3 +1,5 @@
+#!/bin/python
+
 import wget
 from tkinter import *
 import subprocess
@@ -14,10 +16,10 @@ if depnds.upper() == "Y":
     subprocess.call("sudo pip install webbrowser" , shell=True)
 #################################################################
 root = Tk()
-root.geometry("200x355")
-root.title("Downloader")
+root.geometry("172x200")
+root.title("Wget Downloader")
 root.resizable(0, 0)
-load = Image.open('1.jpg')
+load = Image.open('res/2.jpg')
 render = ImageTk.PhotoImage(load)
 img = Label(root,image=render)
 img.place(x= 0, y= 0)
@@ -42,7 +44,7 @@ def youtube_download():
     def ytaudio():
         infodd = ytdd.get()
         youtube_downloaddd = YouTube(infodd)
-        stream = youtube_downloaddd.streams.filter(only_audio=True, subtype='mp3', abr='160kbps').first().download()
+        stream = youtube_downloaddd.streams.filter(only_audio=True, file_extension="mp3", abr='160kbps').first().download()
     def ddd():
         infodd = ytdd.get()
         youtube_downloaddd = YouTube(infodd).streams.get_highest_resolution().download()
@@ -50,8 +52,21 @@ def youtube_download():
     btn = Button(yt,text="Download-Audio",command=ytaudio).pack()     
     yt.mainloop()
 ####################################################################
+def youtubeserch():
+    yt  = Tk()
+    yt.title("YoutubeSearch")
+
+    def ytserch():
+        whatlink = bar.get()
+        text = ("https://www.youtube.com/results?search_query=" + whatlink)
+        webbrowser.open(text)
+    bar = Entry(yt, width=30)
+    bar.pack()
+    btn = Button(yt,text="Search", command=ytserch).pack()    
+    yt.mainloop()
+##################################################################
 def googlesearch():
-    gsearch  = Tk()
+    gsearch = Tk()
     gsearch.title("GoogleSearch")
 
     def serch():
@@ -64,10 +79,9 @@ def googlesearch():
     gsearch.mainloop()
 
 
-
-
 ###################################################################
-button_yt = Button(root,text="Youtube",bg="black",command=youtube_download).grid(column=1, row=1)
-button_Down = Button(root,text="wget",bg="black" ,command=gui_wget).grid(column=2,row=1)
-button_Google = Button(root,text="Google", bg="black" , command=googlesearch).grid(column=3,row=1)
+button_yt = Button(root,text="Youtube\ndownload",bg="black",command=youtube_download).grid(column=1, row=1)
+button_Down = Button(root,text="wget\ndownload",bg="black" ,command=gui_wget).grid(column=2,row=1)
+button_Google = Button(root,text="Google\nsearch", bg="black" , command=googlesearch).grid(column=2,row=2, sticky='nesw')
+button_YoutubeSearch = Button(root,text="Youtube\nsearch", bg="black" , command=youtubeserch).grid(column=1,row=2 ,sticky='nesw')
 root.mainloop()
